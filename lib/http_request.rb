@@ -19,4 +19,9 @@ class Http_request
         base_url+query.search_term
     end
 
+    def request
+        uri = URI(final_url)
+        Net::HTTP.get(uri)
+    end
+
 end

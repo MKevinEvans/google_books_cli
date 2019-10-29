@@ -5,8 +5,8 @@ RSpec.describe 'an HTTP request' do
     def http_request(params ={})
         default = { 
             query: Query.new(search_term: "boston molasses disaster")
-    }
-    Http_request.new(default.merge(params))
+        }
+        Http_request.new(default.merge(params))
     end
 
     it 'accepts a query' do
