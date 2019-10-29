@@ -17,4 +17,12 @@ RSpec.describe 'an HTTP request' do
         expect(http_request().query).to be_an_instance_of(Query)
     end
 
+    it 'contains a base url' do
+        expect(http_request().base_url).to be_an_instance_of(String)
+    end
+
+    it 'combines the base url with the search term' do
+        expect(http_request().final_url).to eq("https://www.googleapis.com/books/v1/volumes?q=boston molasses disaster")
+    end
+
 end
