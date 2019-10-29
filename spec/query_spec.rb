@@ -9,11 +9,11 @@ RSpec.describe 'a search query' do
         Query.new(default.merge(params))
     end
 
-    it 'has a default search term if none is provided (in testing only)' do
-        raise unless query().search_term == "boston molasses disaster"
-    end
-
     it 'accepts a search term' do
         raise unless query(search_term: "dogs").search_term == "dogs"
+    end
+
+    it 'has a default search term if none is provided (in testing only)' do
+        raise unless query().search_term == "boston molasses disaster"
     end
 end
