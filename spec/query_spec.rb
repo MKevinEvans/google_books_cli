@@ -10,10 +10,10 @@ RSpec.describe 'a search query' do
     end
 
     it 'accepts a search term' do
-        raise unless query(search_term: "dogs").search_term == "dogs"
+        expect(query(search_term: "dogs").search_term).to eq("dogs")
     end
 
     it 'has a default search term if none is provided (in testing only)' do
-        raise unless query().search_term == "boston molasses disaster"
+        expect(query().search_term).to eq("boston molasses disaster")
     end
 end

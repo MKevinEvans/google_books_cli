@@ -10,11 +10,11 @@ RSpec.describe 'an HTTP request' do
     end
 
     it 'accepts a query' do
-        raise unless http_request(query: Query.new(search_term: "ducks")).query.search_term == "ducks"
+        expect(http_request(query: Query.new(search_term: "dogs")).query).to be_an_instance_of(Query)
     end
 
     it 'has a default query if none is provided (in testing only)' do
-        raise unless http_request().query.search_term == "boston molasses disaster"
+        expect(http_request().query).to be_an_instance_of(Query)
     end
 
 end
