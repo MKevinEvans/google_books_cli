@@ -13,8 +13,8 @@ RSpec.describe 'a response adapter' do
         expect(response_adapter.response).to be_an_instance_of(String)
     end
 
-    it 'converts the response to json' do
-        expect(response_adapter.json).to be_an_instance_of(Hash)
+    it 'converts the response to a hash' do
+        expect(response_adapter.to_hash).to be_an_instance_of(Hash)
     end
 
     it 'parses out an array book responses from the response' do
@@ -22,8 +22,7 @@ RSpec.describe 'a response adapter' do
     end
 
     it 'turns each item into a book object' do
-        response_adapter.convert_to_books
-        expect(Book.new(book_json: {}).all).not_to be_empty
+        expect(Book.all.length).to eq(response_adapter.items.length)
     end
 
 end

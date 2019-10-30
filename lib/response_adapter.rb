@@ -10,17 +10,17 @@ class Response_adapter
         @response
     end
 
-    def json
+    def to_hash
         JSON.parse(@response)
     end
 
     def items
-        json['items']
+        to_hash['items']
     end
 
     def convert_to_books
         items.each do |book|
-            Book.new(book_json: book)
+            book = Book.new(book_hash: book)
         end
     end
 end
