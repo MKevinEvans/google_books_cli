@@ -6,12 +6,6 @@ class Book
         @@books.push(self)
     end
 
-    def convert_json(hash)
-        hash.keys.each do |key|
-            this[key] = value
-        end
-    end
-
     def book_details
         @book_details
     end
@@ -19,4 +13,33 @@ class Book
     def self.all
         @@books
     end
+
+    def title
+        @book_details['volumeInfo']['title'] ||= "untitled"
+    end
+
+    def authors
+        @book_details['volumeInfo']['authors'] ||= ['no author']
+    end
+
+    def publisher
+        @book_details['volumeInfo']['publisher'] ||= "no publisher"
+    end
+  
+    def [](key)
+      @book_details[key]
+    end
+
+    def []=(key,val)
+      @book_details[key]=val
+    end
+    
+    def []=(key,val)
+        @book_details[key]=val
+    end
+
+    def set_prop(key, value)
+      @book_details[key] = value
+    end
+
 end

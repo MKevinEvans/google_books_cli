@@ -22,6 +22,7 @@ class Http_request
     def request
         uri = URI(final_url)
         response = Net::HTTP.get(uri)
+        Response_adapter.new(response: response)
     end
 
 end

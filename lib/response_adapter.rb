@@ -4,6 +4,7 @@ require 'book'
 class Response_adapter
     def initialize(response:)
         @response = response
+        convert_to_books
     end
 
     def response
