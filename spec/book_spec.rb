@@ -1,6 +1,4 @@
 require 'book'
-require 'http_request'
-require 'query'
 
 RSpec.describe 'a book' do
 
