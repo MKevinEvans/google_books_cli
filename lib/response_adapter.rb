@@ -1,5 +1,5 @@
 require 'json'
-require 'book'
+require './lib/book'
 
 class Response_adapter
     def initialize(response:)
@@ -20,7 +20,7 @@ class Response_adapter
     end
 
     def convert_to_books
-        items.each do |book|
+        items[0..4].map do |book|
             book = Book.new(book_hash: book)
         end
     end
