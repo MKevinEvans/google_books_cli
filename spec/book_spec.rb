@@ -12,34 +12,50 @@ RSpec.describe 'a book' do
         Book.new(book_hash: other_book_hash)
     end
 
-
+    let (:test_book) {book}
+    let (:test_other) {other}
 
     it 'makes book details retrievable through key value pairs' do
-        expect(book['volumeInfo']).not_to eq(nil)
+        expect(test_book['volumeInfo']).not_to eq(nil)
     end
 
     it 'has a title when title is present' do
-        expect(book.title).to be_instance_of(String)
+        expect(test_book.title).to be_instance_of(String)
     end
 
     it 'displays "untitled" when no title is listed' do
-        expect(other.title).to eq("untitled")
+        expect(test_other.title).to eq("untitled")
     end
 
     it 'has a(n) author(s) or displays no authors' do
-        expect(book.authors).to be_instance_of(Array)
+        expect(test_book.authors).to be_instance_of(Array)
     end
 
     it 'lists "no author" when no pauthor is listed' do
-        expect(other.authors[0]).to eq("no author")
+        expect(test_other.authors[0]).to eq("no author")
     end
 
     it 'has a publisher when publisher is present' do
-        expect(book.publisher).to be_instance_of(String)
+        expect(test_book.publisher).to be_instance_of(String)
     end
 
     it 'displays "no publisher" when no publisher is listed' do
-        expect(other.publisher).to eq("no publisher")
+        expect(test_other.publisher).to eq("no publisher")
+    end
+
+    it 'has an on_reading_list attribute' do
+        expect(test_book.on_reading_list).to be(true).or be(false)
+    end
+
+    it 'does not start on a reading list' do
+        book.add_to_reading_list
+
+        expect(test_book.on_reading_list).to be(false)
+    end
+
+    it 'can have its on_reading_list status changed' do
+        test_book.add_to_reading_list
+        expect(test_book.on_reading_list).to be(true)
     end
 
     def book_hash

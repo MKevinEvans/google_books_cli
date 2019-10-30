@@ -2,6 +2,7 @@ require 'response_adapter'
 
 RSpec.describe 'a response adapter' do
 
+
     def response_adapter
         Http_request.new(query: Query.new(search_term: "boston molasses disaster")).request
     end
