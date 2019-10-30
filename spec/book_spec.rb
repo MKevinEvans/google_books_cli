@@ -13,6 +13,10 @@ RSpec.describe 'a book' do
     let (:test_book) {book}
     let (:test_other) {other}
 
+    after :each do
+        test_book.on_reading_list = false
+    end
+
     it 'makes book details retrievable through key value pairs' do
         expect(test_book['volumeInfo']).not_to eq(nil)
     end
