@@ -46,8 +46,6 @@ RSpec.describe 'a book' do
     end
 
     it 'does not start on a reading list' do
-        book.add_to_reading_list
-
         expect(test_book.on_reading_list).to be(false)
     end
 
