@@ -6,8 +6,9 @@ require './lib/reading_list'
 require './lib/response_adapter'
 
 class Session
-
+    
     def search(search_term)
+        check_valid_characters(search_term)
         Http_request.new(query: Query.new(search_term: search_term)).request
         Display_collection.new(collection: Book.all[Book.all.length-5..Book.all.length-1]).display
         puts
@@ -25,7 +26,8 @@ class Session
     end
 
     def route(input)
-        reading_list_selector_array = ["1", "2", "3", "4", "5"]
+        check_valid_characters(input)
+            reading_list_selector_array = ["1", "2", "3", "4", "5"]
         if(reading_list_selector_array.include?(input))
             append_reading_list(input)
         elsif(input=="reading list")
@@ -34,6 +36,13 @@ class Session
             search(gets.strip)
         else
             search(input)
+        end
+    end
+
+    def check_valid_characters(input)
+        unless(input.match? /\A[a-z A-Z0-9!@#&*()-+=\/~;:?'-]{1,40}\z/)
+            print "invalid search, please try another: "
+            route(gets.strip)
         end
     end
 
