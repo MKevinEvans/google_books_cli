@@ -2,13 +2,11 @@ require 'json'
 require './lib/book'
 
 class Response_adapter
+    attr_reader :response
+
     def initialize(response:)
         @response = response
         convert_to_books
-    end
-
-    def response
-        @response
     end
 
     def to_hash

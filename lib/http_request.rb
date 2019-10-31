@@ -1,13 +1,10 @@
 require 'net/http'
 
 class Http_request
+    attr_reader :query
 
     def initialize(query:)
         @query = query
-    end
-
-    def query
-        @query
     end
 
     def base_url
