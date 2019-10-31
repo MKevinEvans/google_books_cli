@@ -25,15 +25,15 @@ RSpec.describe 'a book' do
         expect(test_book.title).to be_instance_of(String)
     end
 
-    it 'displays "untitled" when no title is listed' do
+    it 'lists "untitled" when no title is listed' do
         expect(test_other.title).to eq("untitled")
     end
 
-    it 'has a(n) author(s) or displays no authors' do
+    it 'lists (an) author(s) when author is present' do
         expect(test_book.authors).to be_instance_of(Array)
     end
 
-    it 'lists "no author" when no pauthor is listed' do
+    it 'lists "no author" when no author is listed' do
         expect(test_other.authors[0]).to eq("no author")
     end
 

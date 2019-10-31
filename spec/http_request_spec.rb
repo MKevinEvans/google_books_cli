@@ -13,7 +13,7 @@ RSpec.describe 'an HTTP request' do
         expect(http_request(query: Query.new(search_term: "dogs")).query).to be_an_instance_of(Query)
     end
 
-    it 'has a default query if none is provided (in testing only)' do
+    it 'has a default query if none is provided (for testing only)' do
         expect(http_request().query).to be_an_instance_of(Query)
     end
 
