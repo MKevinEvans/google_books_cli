@@ -14,6 +14,9 @@ class Display_collection
                 puts
             end
         else
+# THIS OUTPUT IS USED BOTH FOR CASES WHEN THE USERS READING LIST IS EMPTY,
+# AS WELL AS IF THE API RETURNS NO RESULTS
+
             puts
             puts "There are no books in this collection"
             puts

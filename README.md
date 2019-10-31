@@ -8,7 +8,9 @@
 - Ruby 2.6.0 or greater installed
 - RSpec installed (to run tests only)
 
-#### 1. Clone this repo and navigate into the folder
+## Instructions
+
+#### 1. Clone this repopository and navigate into the folder
 
 `$ git clone https://github.com/MKevinEvans/google_books_cli`
 `$ cd google_books_cli`
@@ -21,3 +23,7 @@
 
 The application will allow a user to search for books through the google books api.
 For each search, users will receive basic information on 5 books and be given the option to add titles to a Reading List, which they can retrieve later in their session.
+
+## Application Design
+
+## Assumptions

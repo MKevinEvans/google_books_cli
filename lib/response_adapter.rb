@@ -1,6 +1,8 @@
 require 'json'
 require './lib/book'
 
+# This  adapter takes the response from an HTTP request and turns the first 5 results given into book objects
+# Note: this is called in the Http_request 'request' method
 class Response_adapter
     attr_reader :response
 

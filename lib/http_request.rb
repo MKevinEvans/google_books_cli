@@ -15,6 +15,8 @@ class Http_request
         base_url+query.search_term
     end
 
+# This method makes the request and calls the adapter which results in the response becoming books.
+# Notes: It has no direct output
     def request
         uri = URI(final_url)
         response = Net::HTTP.get(uri)
