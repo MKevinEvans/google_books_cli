@@ -21,7 +21,8 @@ class Session
         current_collection = current_collection = Book.all.select.with_index{|book, index| index >= (Book.all.length-5)}
         current_collection[index].add_to_reading_list
         puts
-        print current_collection[index].title, " has been added to your reading list. Enter 1-5 to add another book to your reading list, enter a new search term to view more books, or enter 'reading list' to view your reading list: "
+        print current_collection[index].title, " has been added to your reading list."
+        print "Enter 1-5 to add another book to your reading list, enter a new search term to view more books, or enter 'reading list' to view your reading list: "
         route(gets.strip)
     end
 

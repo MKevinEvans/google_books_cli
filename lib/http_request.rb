@@ -20,5 +20,4 @@ class Http_request
         response = Net::HTTP.get(uri)
         Response_adapter.new(response: response)
     end
-
 end
