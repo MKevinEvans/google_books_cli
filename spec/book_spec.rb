@@ -25,8 +25,12 @@ RSpec.describe 'a book' do
         expect(test_other.title).to eq("untitled")
     end
 
-    it 'lists (an) author(s) when author is present' do
-        expect(test_book.authors).to be_instance_of(Array)
+    it 'lists 1 author when only 1 author is present' do
+        expect(test_book.authors[0]).to eq("Stephen Puleo")
+    end
+
+    it 'lists all authors when more than 1 authors are present' do
+        expect(other_test_book.authors).to be_instance_of(Array)
     end
 
     it 'lists "no author" when no author is listed' do
