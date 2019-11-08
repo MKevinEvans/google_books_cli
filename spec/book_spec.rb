@@ -14,31 +14,31 @@ RSpec.describe 'a book' do
     let (:test_other) {other}
 
     it 'makes book details retrievable through key value pairs' do
-        expect("Dark Tide").to eq(test_book['volumeInfo']['title'])
+        expect(test_book['volumeInfo']['title']).to eq("Dark Tide")
     end
 
     it 'has a title when title is present' do
-        expect("Dark Tide").to eq(test_book.title)
+        expect(test_book.title).to eq("Dark Tide")
     end
 
     it 'lists "untitled" when no title is listed' do
-        expect("untitled").to eq(test_other.title)
+        expect(test_other.title).to eq("untitled")
     end
 
     it 'lists all authors when more than 1 author is present' do
-        expect("Stephen Pule-two").to eq(test_book.authors[1])
+        expect(test_book.authors[1]).to eq("Stephen Pule-two")
     end
 
     it 'lists "no author" when no author is listed' do
-        expect("no author").to eq(test_other.authors[0])
+        expect(test_other.authors[0]).to eq("no author")
     end
 
     it 'has a publisher when publisher is present' do
-        expect("Beacon Press").to eq(test_book.publisher)
+        expect(test_book.publisher).to eq("Beacon Press")
     end
 
     it 'displays "no publisher" when no publisher is listed' do
-        expect("no publisher").to eq(test_other.publisher)
+        expect(test_other.publisher).to eq("no publisher")
     end
 
     def book_hash

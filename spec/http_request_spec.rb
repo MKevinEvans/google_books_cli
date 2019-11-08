@@ -15,19 +15,19 @@ RSpec.describe 'an HTTP request' do
     let (:test_query) {make_test_query}
 
     it 'accepts a query' do
-        expect("dogs").to eq(http_request(query: test_query).query.search_term)
+        expect(http_request(query: test_query).query.search_term).to eq("dogs")
     end
 
     it 'has a default query if none is provided (for testing only)' do
-        expect("boston molasses disaster").to eq(http_request().query.search_term)
+        expect(http_request().query.search_term).to eq("boston molasses disaster")
     end
 
     it 'contains google books api\'s base url' do
-        expect("https://www.googleapis.com/books/v1/volumes?q=").to eq(http_request().base_url)
+        expect(http_request().base_url).to eq("https://www.googleapis.com/books/v1/volumes?q=")
     end
 
     it 'combines the base url with the search term' do
-        expect("https://www.googleapis.com/books/v1/volumes?q=boston molasses disaster").to eq(http_request().final_url)
+        expect(http_request().final_url).to eq("https://www.googleapis.com/books/v1/volumes?q=boston molasses disaster")
     end
 
 end

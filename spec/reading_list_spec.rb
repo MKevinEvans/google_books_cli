@@ -9,10 +9,10 @@ RSpec.describe 'a reading_list' do
     end
     let (:test_book) {book}
     
-    def other_book
+    def duplicate_book
         Book.new(book_hash: book_hash)
     end
-    let (:other_test_book) {other_book}
+    let (:duplicate_test_book) {duplicate_book}
 
     def make_empty_reading_list
         Reading_list.new
@@ -27,15 +27,15 @@ RSpec.describe 'a reading_list' do
     let (:reading_list_one_book) {make_reading_list_one_book}
 
     it 'contains an empty array before a book has been added' do
-        expect(empty_reading_list.list.length).to eq(0)
+        expect(empty_reading_list.list[0]).to eq(nil)
     end
 
     it 'contains a list with 1 book after a book has been added' do
-        expect(reading_list_one_book.list.length).to eq(1)
+        expect(reading_list_one_book.list[0]).to eq(test_book)
     end
 
     it 'contains only 1 of each books added' do
-        reading_list_one_book.add(other_test_book)
+        reading_list_one_book.add(duplicate_test_book)
         expect(reading_list_one_book.list.length).to eq(1)
     end
 
