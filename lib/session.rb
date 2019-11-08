@@ -6,14 +6,17 @@ require './lib/reading_list'
 require './lib/response_adapter'
 
 class Session
+    attr_accessor :current_collection
 
     def initialize
         @reading_list = Reading_list.new()
+        @current_collection = []
     end
     
     def search(search_term)
         check_valid_characters(search_term)
-        Http_request.new(query: Query.new(search_term: search_term)).request
+        @current_collection = Http_request.new(query: Query.new(search_term: search_term)).request.convert_to_books
+        require 'pry-byebug'; binding.pry
         # Selects the last 5 books created, which will always be the result of the most recent search
         Display_collection.new(collection: Book.all[Book.all.length-5..Book.all.length-1]).display
         #
