@@ -20,8 +20,7 @@ RSpec.describe 'a response adapter' do
     end
 
     it 'turns the first 5 book items into book objects' do
-        
-        expect(response_adapter.convert_to_books[4].title).to eq(response_adapter.items[response_adapter.items.length-6]['volumeInfo']['title'])
+        expect(response_adapter.convert_to_books[4].title).to eq("dark tide")
     end
 
     def mock_response
