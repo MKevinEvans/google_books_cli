@@ -14,23 +14,19 @@ RSpec.describe 'a book' do
     let (:test_other) {other}
 
     it 'makes book details retrievable through key value pairs' do
-        expect(test_book['volumeInfo']).not_to eq(nil)
+        expect(test_book['volumeInfo']['title']).to eq("Dark Tide")
     end
 
     it 'has a title when title is present' do
-        expect(test_book.title).to be_instance_of(String)
+        expect(test_book.title).to eq("Dark Tide")
     end
 
     it 'lists "untitled" when no title is listed' do
         expect(test_other.title).to eq("untitled")
     end
 
-    it 'lists 1 author when only 1 author is present' do
-        expect(test_book.authors[0]).to eq("Stephen Puleo")
-    end
-
-    it 'lists all authors when more than 1 authors are present' do
-        expect(other_test_book.authors).to be_instance_of(Array)
+    it 'lists all authors when more than 1 author is present' do
+        expect(test_book.authors[1]).to eq("Stephen Pule-two")
     end
 
     it 'lists "no author" when no author is listed' do
@@ -38,7 +34,7 @@ RSpec.describe 'a book' do
     end
 
     it 'has a publisher when publisher is present' do
-        expect(test_book.publisher).to be_instance_of(String)
+        expect(test_book.publisher).to eq("Beacon Press")
     end
 
     it 'displays "no publisher" when no publisher is listed' do
@@ -53,7 +49,7 @@ RSpec.describe 'a book' do
         "volumeInfo"=>
         {"title"=>"Dark Tide",
         "subtitle"=>"The Great Boston Molasses Flood of 1919",
-        "authors"=>["Stephen Puleo"],
+        "authors"=>["Stephen Puleo", "Stephen Pule-two"],
         "publisher"=>"Beacon Press",
         "publishedDate"=>"2019-01-15",
         "description"=>
