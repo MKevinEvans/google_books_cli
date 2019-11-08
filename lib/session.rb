@@ -6,6 +6,10 @@ require './lib/reading_list'
 require './lib/response_adapter'
 
 class Session
+
+    def initialize
+        @reading_list = Reading_list.new()
+    end
     
     def search(search_term)
         check_valid_characters(search_term)
@@ -24,9 +28,9 @@ class Session
         reading_list_selector_array = ["1", "2", "3", "4", "5"]
 
         if(reading_list_selector_array.include?(input))
-            Reading_list.new.append_reading_list(input, self)
+            @reading_list.append_reading_list(input, self)
         elsif(input=="reading list")
-            Display_collection.new(collection: Reading_list.new.list).display
+            Display_collection.new(collection: @reading_list.list).display
             print "Enter a new search term to view more books: "
             search(gets.strip)
         else
