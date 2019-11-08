@@ -1,15 +1,8 @@
 class Book
     attr_reader :book_details
 
-    @@books = []
-
     def initialize(book_hash:)
         @book_details = book_hash
-        @@books.push(self)
-    end
-
-    def self.all
-        @@books
     end
 
 # Nonstandard getter methods to accomodate the information being in the volumeInfo field returned from the API
