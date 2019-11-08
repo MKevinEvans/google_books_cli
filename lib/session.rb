@@ -44,7 +44,7 @@ class Session
     def check_valid_characters(input)
         unless(input.match? /\A[a-z A-Z0-9!@#&*()-+=\/~;:?'-]{1,40}\z/)
             print "invalid search, please try another: "
-            route(gets.strip)
+            search(gets.strip)
         end
     end
 
