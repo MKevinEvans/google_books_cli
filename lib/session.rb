@@ -15,10 +15,9 @@ class Session
     
     def search(search_term)
         check_valid_characters(search_term)
-        @current_collection = Http_request.new(query: Query.new(search_term: search_term)).request.convert_to_books
-        # Selects the last 5 books created, which will always be the result of the most recent search
+        query = Query.new(search_term: search_term)
+        @current_collection = Http_request.new(query: query).request.convert_to_books
         Display_collection.new(collection: @current_collection).display
-        #
         
         puts
         print "Enter 1-5 to add one of these books to your reading list, enter a new search term to view more books, or enter 'reading list' to view your reading list: "
