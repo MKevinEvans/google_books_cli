@@ -7,20 +7,21 @@ RSpec.describe 'a response adapter' do
         Response_adapter.new(response: mock_response)
     end
 
-    it 'receives a response of type String' do
-        expect(response_adapter.response).to be_an_instance_of(String)
-    end
+# CONSIDER REMOVING AS THEY ARE ONLY TESTING IMPLEMENTATION AND NOT BEHAVIOR
+    # it 'receives a response of type String' do
+    #     expect(response_adapter.response).to be_an_instance_of(String)
+    # end
 
-    it 'converts the response to a hash' do
-        expect(response_adapter.to_hash).to be_an_instance_of(Hash)
-    end
+    # it 'converts the response to a hash' do
+    #     expect(response_adapter.to_hash).to be_an_instance_of(Hash)
+    # end
 
-    it 'parses out an array of book items from the response' do
-        expect(response_adapter.items).to  be_an_instance_of(Array)
-    end
+    # it 'parses out an array of book items from the response' do
+    #     expect(response_adapter.items).to  be_an_instance_of(Array)
+    # end
 
     it 'turns the first 5 book items into book objects' do
-        expect(response_adapter.convert_to_books[4].title).to eq("dark tide")
+        expect(response_adapter.convert_to_books[0].title).to eq("Dark Tide")
     end
 
     def mock_response
