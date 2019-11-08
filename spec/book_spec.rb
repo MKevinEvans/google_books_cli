@@ -13,10 +13,6 @@ RSpec.describe 'a book' do
     let (:test_book) {book}
     let (:test_other) {other}
 
-    after :each do
-        test_book.on_reading_list = false
-    end
-
     it 'makes book details retrievable through key value pairs' do
         expect(test_book['volumeInfo']).not_to eq(nil)
     end
@@ -43,19 +39,6 @@ RSpec.describe 'a book' do
 
     it 'displays "no publisher" when no publisher is listed' do
         expect(test_other.publisher).to eq("no publisher")
-    end
-
-    it 'has an on_reading_list attribute' do
-        expect(test_book.on_reading_list).to be(true).or be(false)
-    end
-
-    it 'does not start on a reading list' do
-        expect(test_book.on_reading_list).to be(false)
-    end
-
-    it 'can have its on_reading_list status changed' do
-        test_book.add_to_reading_list
-        expect(test_book.on_reading_list).to be(true)
     end
 
     def book_hash

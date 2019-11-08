@@ -1,5 +1,4 @@
 class Book
-    attr_accessor :on_reading_list
     attr_reader :book_details
 
     @@books = []
@@ -7,11 +6,6 @@ class Book
     def initialize(book_hash:)
         @book_details = book_hash
         @@books.push(self)
-        @on_reading_list = false
-    end
-
-    def add_to_reading_list
-        @on_reading_list = true
     end
 
     def self.all
