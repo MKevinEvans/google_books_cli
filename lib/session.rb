@@ -19,23 +19,12 @@ class Session
         route(gets.strip)
     end
 
-    def append_reading_list(number)
-        index = number.to_i-1
-        current_collection = Book.all.select.with_index{|book, index| index >= (Book.all.length-5)}
-        current_collection[index].add_to_reading_list
-
-        puts
-        puts current_collection[index].title, " has been added to your reading list."
-        print "Enter 1-5 to add another book to your reading list, enter a new search term to view more books, or enter 'reading list' to view your reading list: "
-        route(gets.strip)
-    end
-
     def route(input)
         check_valid_characters(input)
         reading_list_selector_array = ["1", "2", "3", "4", "5"]
 
         if(reading_list_selector_array.include?(input))
-            append_reading_list(input)
+            Reading_list.new.append_reading_list(input, self)
         elsif(input=="reading list")
             Display_collection.new(collection: Reading_list.new.list).display
             print "Enter a new search term to view more books: "
