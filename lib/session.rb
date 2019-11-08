@@ -16,7 +16,6 @@ class Session
     def search(search_term)
         check_valid_characters(search_term)
         @current_collection = Http_request.new(query: Query.new(search_term: search_term)).request.convert_to_books
-        require 'pry-byebug'; binding.pry
         # Selects the last 5 books created, which will always be the result of the most recent search
         Display_collection.new(collection: Book.all[Book.all.length-5..Book.all.length-1]).display
         #
