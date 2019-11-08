@@ -6,7 +6,9 @@ class Reading_list
     end
 
     def add(book)
-      @list.push(book)
+      unless(@list.include?(book))
+        @list.push(book)
+      end
     end
 
     def append_reading_list(number, session)

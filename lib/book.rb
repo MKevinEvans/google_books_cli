@@ -1,5 +1,5 @@
 class Book
-    attr_reader :book_details
+    attr_accessor :book_details
 
     def initialize(book_hash:)
         @book_details = book_hash
@@ -25,6 +25,14 @@ class Book
 
     def []=(key,val)
       @book_details[key]=val
+    end
+
+    def ==(other)
+        if other.nil? || !other.instance_of?(Book)
+            false
+        else
+            title == other.title && authors == other.authors && publisher == other.publisher
+        end
     end
 
 end
