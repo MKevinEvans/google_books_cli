@@ -5,11 +5,14 @@ class Reading_list
       @list = []
     end
 
+    def add(book)
+      @list.push(book)
+    end
 
     def append_reading_list(number, session)
       index = number.to_i-1
       current_collection = Book.all.select.with_index{|book, index| index >= (Book.all.length-5)}
-      @list.push(current_collection[index])
+      @list.add(current_collection[index])
 
       puts
       print current_collection[index].title, " has been added to your reading list." "\n"
