@@ -21,7 +21,7 @@ class Session
         check_valid_characters(search_term)
         query = Query.new(search_term: search_term)
         @current_collection = @request_handler.new(query: query).request.convert_to_books
-        Display_collection.new(collection: @current_collection).display
+        DisplayCollection.new(collection: @current_collection).display
         puts
         print "Enter 1-5 to add one of these books to your reading list, enter a new search term to view more books, or enter 'reading list' to view your reading list: "
         route(@io.receive_input.strip)
@@ -35,7 +35,7 @@ class Session
             @reading_list.append_reading_list(input, self)
             route(@io.receive_input.strip)
         elsif(input=="reading list")
-            Display_collection.new(collection: @reading_list.list).display
+            DisplayCollection.new(collection: @reading_list.list).display
             print "Enter a new search term to view more books: "
             search(gets.strip)
         elsif(input=="exit")

@@ -1,4 +1,4 @@
-class Display_collection
+class DisplayCollection
 
     def initialize(collection:)
         @books = collection
