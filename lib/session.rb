@@ -5,6 +5,7 @@ require './lib/query'
 require './lib/reading_list'
 require './lib/response_adapter'
 require './lib/io'
+require './lib/display_helper'
 
 class Session
     attr_accessor :current_collection
@@ -14,46 +15,34 @@ class Session
     def initialize(io = Io.new, request_handler = HttpRequest)
         @reading_list = ReadingList.new()
         @current_collection = []
-        @io = io
+        @display_helper = DisplayHelper.new(self, io)
         @request_handler = request_handler
+    end
+
+    def start
+        @display_helper.start
     end
     
     def search(search_term)
-        check_valid_characters(search_term)
+        @display_helper.check_valid_characters(search_term)
         query = Query.new(search_term: search_term)
         @current_collection = @request_handler.new(query: query).request.convert_to_books
-        DisplayCollection.new(collection: @current_collection, io: @io).display
-        @io.produce_output "\n"
-        @io.produce_output "Enter 1-5 to add one of these books to your reading list, enter a new search term to view more books, enter 'reading list' to view your reading list, or enter 'exit' to quit: "
-        route(@io.receive_input.strip)
+        @display_helper.search(@current_collection)
     end
 
     def route(input)
-        check_valid_characters(input)
+        @display_helper.check_valid_characters(input)
         reading_list_selector_array = ["1", "2", "3", "4", "5"]
 
         if(reading_list_selector_array.include?(input))
             @reading_list.append_reading_list(@current_collection[input.to_i-1])
-            @io.produce_output "\n"
-            @io.produce_output @current_collection[input.to_i-1].title, " has been added to your reading list." "\n"
-            @io.produce_output "Enter 1-5 to add another book to your reading list, enter a new search term to view more books, enter 'reading list' to view your reading list, or enter 'exit' to quit: "
-            route(@io.receive_input.strip)
+            @display_helper.add_book_to_reading_list(@current_collection[input.to_i-1])
         elsif(input=="reading list")
-            DisplayCollection.new(collection: @reading_list.list, io: @io).display
-            @io.produce_output "Enter a new search term to view more books: "
-            search(@io.receive_input.strip)
+            @display_helper.reading_list(@reading_list)
         elsif(input=="exit")
-            @io.produce_output "Goodbye \n"
+            @display_helper.exit
         else
             search(input)
-        end
-    end
-
-# Checks to ensure all characters are those that have been tested with the API and doesn't exceed max length
-    def check_valid_characters(input)
-        unless(input.match? /\A[a-z A-Z0-9!@#&*()-+=\/~;:?'-]{1,40}\z/)
-            @io.produce_output "invalid search, please try another: "
-            search(@io.receive_input.strip)
         end
     end
 
