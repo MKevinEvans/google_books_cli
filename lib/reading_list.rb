@@ -1,4 +1,4 @@
-class Reading_list
+class ReadingList
   attr_accessor :list
 
     def initialize

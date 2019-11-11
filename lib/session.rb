@@ -10,8 +10,8 @@ class Session
     attr_accessor :current_collection
     attr_reader :reading_list
 
-    def initialize(io = Io.new, request_handler = Http_request)
-        @reading_list = Reading_list.new()
+    def initialize(io = Io.new, request_handler = HttpRequest)
+        @reading_list = ReadingList.new()
         @current_collection = []
         @io = io
         @request_handler = request_handler

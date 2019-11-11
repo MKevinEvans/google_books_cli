@@ -4,7 +4,7 @@ RSpec.describe 'a response adapter' do
 
 
     def response_adapter
-        Response_adapter.new(response: mock_response)
+        ResponseAdapter.new(response: mock_response)
     end
 
 # CONSIDER REMOVING AS THEY ARE ONLY TESTING IMPLEMENTATION AND NOT BEHAVIOR

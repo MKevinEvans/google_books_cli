@@ -15,12 +15,12 @@ RSpec.describe 'a reading_list' do
     let (:duplicate_test_book) {duplicate_book}
 
     def make_empty_reading_list
-        Reading_list.new
+        ReadingList.new
     end
     let (:empty_reading_list) {make_empty_reading_list}
 
     def make_reading_list_one_book
-        list = Reading_list.new
+        list = ReadingList.new
         list.add(test_book)
         list
     end

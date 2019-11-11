@@ -6,7 +6,7 @@ RSpec.describe 'an HTTP request' do
         default = { 
             query: Query.new(search_term: "boston molasses disaster")
         }
-        Http_request.new(default.merge(params))
+        HttpRequest.new(default.merge(params))
     end
 
     def make_test_query

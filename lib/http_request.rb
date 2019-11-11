@@ -1,6 +1,6 @@
 require 'net/http'
 
-class Http_request
+class HttpRequest
     attr_reader :query
 
     def initialize(query:)
@@ -20,6 +20,6 @@ class Http_request
     def request
         uri = URI(final_url)
         response = Net::HTTP.get(uri)
-        Response_adapter.new(response: response)
+        ResponseAdapter.new(response: response)
     end
 end
