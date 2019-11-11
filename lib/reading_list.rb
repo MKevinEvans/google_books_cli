@@ -18,6 +18,5 @@ class Reading_list
       puts
       print session.current_collection[index].title, " has been added to your reading list." "\n"
       print "Enter 1-5 to add another book to your reading list, enter a new search term to view more books, or enter 'reading list' to view your reading list: "
-      session.route(gets.strip)
   end
 end
