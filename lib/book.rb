@@ -27,6 +27,7 @@ class Book
       @book_details[key]=val
     end
 
+#Calls two books equal if author, title, and publisher are all the same    
     def ==(other)
         if other.nil? || !other.instance_of?(Book)
             false
