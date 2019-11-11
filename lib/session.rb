@@ -22,7 +22,7 @@ class Session
         check_valid_characters(search_term)
         query = Query.new(search_term: search_term)
         @current_collection = @request_handler.new(query: query).request.convert_to_books
-        DisplayCollection.new(collection: @current_collection, session: self).display
+        DisplayCollection.new(collection: @current_collection, io: @io).display
         @io.produce_output "\n"
         @io.produce_output "Enter 1-5 to add one of these books to your reading list, enter a new search term to view more books, enter 'reading list' to view your reading list, or enter 'exit' to quit: "
         route(@io.receive_input.strip)
@@ -39,7 +39,7 @@ class Session
             @io.produce_output "Enter 1-5 to add another book to your reading list, enter a new search term to view more books, enter 'reading list' to view your reading list, or enter 'exit' to quit: "
             route(@io.receive_input.strip)
         elsif(input=="reading list")
-            DisplayCollection.new(collection: @reading_list.list, session: self).display
+            DisplayCollection.new(collection: @reading_list.list, io: @io).display
             @io.produce_output "Enter a new search term to view more books: "
             search(@io.receive_input.strip)
         elsif(input=="exit")

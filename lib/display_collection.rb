@@ -1,8 +1,8 @@
 class DisplayCollection
 
-    def initialize(collection:, session:)
+    def initialize(collection:, io:)
         @books = collection
-        @io = session.io
+        @io = io
     end
 
     def display
