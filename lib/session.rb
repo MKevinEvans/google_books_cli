@@ -9,6 +9,7 @@ require './lib/io'
 class Session
     attr_accessor :current_collection
     attr_reader :reading_list
+    attr_reader :io
 
     def initialize(io = Io.new, request_handler = HttpRequest)
         @reading_list = ReadingList.new()
