@@ -17,6 +17,13 @@ RSpec.describe 'a session' do
 
     describe 'a route' do
 
+        it 'adds a book to the reading list when a user selects a book' do
+            mock_io = IoTestDouble.new(["2\n", "exit\n"])
+            session = Session.new(mock_io, HttpRequestDouble)
+            session.search("boston molasses disaster")
+            expect(session.reading_list.list[0].title).to eq("Dark Tide")
+        end
+        
         it 'outputs add to reading list confirmation when a book is selected' do
             mock_io = IoTestDouble.new(["exit\n"])
             session = Session.new(mock_io, HttpRequestDouble)
@@ -27,13 +34,6 @@ RSpec.describe 'a session' do
             session.current_collection.push(BookDouble.new("book5", ["Stephen Puleo"], "Beacon Press (MA)"))
 
             expect {session.route("2")}.to output(reading_list_add_confirmation).to_stdout
-        end
-
-        it 'adds a book to the reading list when a user selects a book' do
-            mock_io = IoTestDouble.new(["2\n", "exit\n"])
-            session = Session.new(mock_io, HttpRequestDouble)
-            session.search("boston molasses disaster")
-            expect(session.reading_list.list[0].title).to eq("Dark Tide")
         end
 
         it 'outputs search results when called with a search term"' do
