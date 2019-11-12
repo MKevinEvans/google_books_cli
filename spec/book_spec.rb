@@ -13,11 +13,6 @@ RSpec.describe 'a book' do
     let (:test_book) {book}
     let (:test_other) {other}
 
-# Implementation not behavior?
-    # it 'makes book details retrievable through key value pairs' do
-    #     expect(test_book['volumeInfo']['title']).to eq("Dark Tide")
-    # end
-
     it 'has a title when title is present' do
         expect(test_book.title).to eq("Dark Tide")
     end
