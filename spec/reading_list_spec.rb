@@ -1,5 +1,4 @@
 require 'reading_list'
-require 'book_spec'
 
 
 RSpec.describe 'a reading_list' do
