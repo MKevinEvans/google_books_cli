@@ -19,12 +19,6 @@ class Session
         @request_handler = request_handler
     end
 
-    def test_stdout(testtext)
-        print "\n"
-        print testtext
-        print "\n"
-    end
-
     def start
         @display_helper.start
     end
