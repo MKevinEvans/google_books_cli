@@ -1,16 +1,7 @@
 require 'session'
 require './mocks/io_test_double'
 require './mocks/http_request_double'
-
-class BookDouble
-    attr_reader :title, :authors, :publisher
-
-    def initialize(title, authors, publisher)
-        @title = title
-        @authors = authors
-        @publisher = publisher
-    end
-end
+require './mocks/book_double'
 
 RSpec.describe 'a session' do
 
