@@ -10,7 +10,7 @@ class DisplayHelper
     def start
         @io.produce_output "Hello! Enter a search term to find books: "
         search_term = @io.receive_input.strip
-        @session.search(search_term)
+        @session.route(search_term)
     end
 
     def search(collection)
@@ -30,7 +30,7 @@ class DisplayHelper
     def reading_list(reading_list)
         display_collection(reading_list.list)
         @io.produce_output "Enter a new search term to view more books: "
-        @session.search(@io.receive_input.strip)
+        @session.route(@io.receive_input.strip)
     end
 
     def exit
@@ -41,7 +41,7 @@ class DisplayHelper
     def check_valid_characters(input)
         unless(input.match? /\A[a-z A-Z0-9!@#&*()-+=\/~;:?'-]{1,40}\z/)
             @io.produce_output "invalid search, please try another: "
-            @session.search(@io.receive_input.strip)
+            @session.route(@io.receive_input.strip)
         end
     end
 

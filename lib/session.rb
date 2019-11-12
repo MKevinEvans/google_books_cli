@@ -19,6 +19,12 @@ class Session
         @request_handler = request_handler
     end
 
+    def test_stdout(testtext)
+        print "\n"
+        print testtext
+        print "\n"
+    end
+
     def start
         @display_helper.start
     end
@@ -34,7 +40,7 @@ class Session
         @display_helper.check_valid_characters(input)
         reading_list_selector_array = ["1", "2", "3", "4", "5"]
 
-        if(reading_list_selector_array.include?(input))
+        if(reading_list_selector_array.include?(input) && @current_collection.length > 0)
             @reading_list.append_reading_list(@current_collection[input.to_i-1])
             @display_helper.add_book_to_reading_list(@current_collection[input.to_i-1])
         elsif(input=="reading list")

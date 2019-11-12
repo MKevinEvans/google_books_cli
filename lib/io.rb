@@ -1,6 +1,6 @@
 class Io
     def receive_input
-        gets
+        gets.strip
     end
 
     def produce_output(*inputs)
